@@ -38,12 +38,13 @@ const Register = (props)=>{
                 <input type="password" name="" id="password" placeholder='password' onChange={passwordHandler} value={password}/>
                 <button type='submit' onClick={registerUserHandler}>Register</button>
             </Form>
-            <BackButton><Link to='/'>Back button</Link></BackButton>
+            <Link to='/'> <BackButton>Back button</BackButton></Link>
         </RegisterContainer>
     )
 }
 const RegisterContainer = styled.section`
     width: 70%;
+    max-width:400px;
     height: 60%;
     display:flex;
     flex-direction:column;
@@ -72,7 +73,7 @@ const Form = styled.form`
        outline:none;
     }
     button{
-        width:50%;
+        min-width:150px;
         background:#35d388;
         border:none;
         padding:10px;
@@ -83,10 +84,10 @@ const Form = styled.form`
   
 `
 const BackButton = styled.button`
-    width:50%;
+        min-width:150px;
         background:#35d388;
         border:none;
-        padding:5px;
+        padding:10px;
         color:#fff;
         border-radius:10px;
     a{

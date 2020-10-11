@@ -5,8 +5,8 @@ import {Link} from 'react-router-dom'
 const User = (props) =>{
     return(
         <UserContainer>
-            <Button><Link to="/register">register</Link></Button>
-            <Button><Link to="/login">login</Link></Button>
+           <Link to="/register"> <Button>register</Button></Link>
+           <Link to="/login"><Button>login</Button></Link> 
      
     
         </UserContainer>
@@ -22,6 +22,7 @@ const UserContainer = styled.section`
     border:1px solid #35d388;
     border-radius: 10px;
     padding:20px;
+    max-width:400px;
     
 `
 const Button = styled.button`
@@ -32,11 +33,14 @@ const Button = styled.button`
         color:#fff;
         border-radius:10px;
         margin:10px;
-        width:60%;
+        min-width:150px;
+       
         a{
             text-decoration:none;
             color:#fff;
-            padding:10px;
+           
+            background-color:#35d388;
+            
         }
         
 `

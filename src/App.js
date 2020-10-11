@@ -37,6 +37,7 @@ function App(props) {
 
 const Container = styled.div`
   width: 100%;
+  min-width:200px;
   min-height: 100vh;
   display: grid;
   grid-template-columns: 1fr;
