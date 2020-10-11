@@ -11,7 +11,7 @@ function App(props) {
   return (
     <Container>
       <GlobalStyles />
-      <Header>header</Header>
+      <Header><h1>QuickShop</h1></Header>
       <Main>
       <Switch>
         <Route exact path="/">
@@ -37,7 +37,7 @@ function App(props) {
 
 const Container = styled.div`
   width: 100%;
-  min-height: 98vh;
+  min-height: 100vh;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 60px 1fr 60px;
@@ -49,16 +49,27 @@ const Container = styled.div`
 const Header = styled.header`
   border-bottom: 1px solid #35d388;
   grid-area: "header";
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#35d388;
+  color:#fff;
 `;
 const Main = styled.main`
   grid-area: "Main";
   display: flex;
   flex-direction: column;
   align-items:center;
+  justify-content:center;
 `;
 const Footer = styled.footer`
   grid-area: "Footer";
   border-top: 1px solid #35d388;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background-color:#35d388;
+  color:#fff;
 `;
 
 
