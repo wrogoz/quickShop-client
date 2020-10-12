@@ -11,17 +11,19 @@ const Login = (props)=>{
            e.preventDefault()     
            axios.post('http://localhost:8000/user/login', {
            
-            email: {email},
-            password:{password}
+            email: email,
+            password:password
           })
           .then(function (response) {
-            console.log(response);
+            console.log(response.data.token);
+            localStorage.setItem('access-token',response.data.token)
+            props.dispatch({type:"LOGIN"});
           })
           .catch(function (error) {
             console.log(error);
           });
            console.log('Login user btn clicked')
-           console.log(`email:${email} password:{password}`)
+           console.log(`email:${email} password:${password}`)
     }
     const  emailHandler = (e)=>{
        setEmail(e.target.value) 

@@ -2,9 +2,12 @@ import React from 'react'
 import styled from 'styled-components'
 
 const Header = ()=>{
+    const clear = ()=>{
+        localStorage.removeItem('access-token')
+    }
     return(
         <HeaderContainer>
-            <h1>QuickShop</h1>
+            <h1 onClick={clear}>QuickShop</h1>
         </HeaderContainer>
     )
 }

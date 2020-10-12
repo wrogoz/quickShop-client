@@ -1,17 +1,21 @@
 
 const initialState = {
     test:'reducer test',
-    isUserLoggedIn:false
+    isUserLoggedIn:true
    }
   
   const reducer = (state = initialState, action)=> {
       switch (action.type) {
      
-        case 'TEST':
+        case 'LOGIN':
           return{
             ...state,
-            WindowWidth:action.width
-           
+            isUserLoggedIn:true
+          }
+          case 'LOGOUT':
+          return{
+            ...state,
+            isUserLoggedIn:false
           }
       
         default:

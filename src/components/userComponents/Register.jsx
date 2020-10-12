@@ -10,9 +10,9 @@ const Register = (props)=>{
     const registerUserHandler=(e)=>{
            e.preventDefault()     
            axios.post('http://localhost:8000/user/register', {
-            name: {email},
-            email: {email},
-            password:{password}
+            name: email,
+            email: email,
+            password:password
           })
           .then(function (response) {
             console.log(response);

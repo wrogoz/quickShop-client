@@ -1,8 +1,23 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import styled from 'styled-components'
+import axios from 'axios'
+import {connect} from 'react-redux'
 
+const ShoppingList = (props)=>{
 
-const ShoppingList = ()=>{
+useEffect(() => {
+  if(localStorage.getItem('access-token')){
+    axios.get('http://localhost:8000/user/me',{headers:{'access-token':localStorage.getItem('access-token')}})
+    .then((res)=>{
+      console.log(res)
+    })
+    .catch((err)=>{
+      props.dispatch({type:"LOGOUT"})
+    })
+  }else{
+    props.dispatch({type:"LOGOUT"})
+  }
+}, [])
     return(<>
     
         <ul>
@@ -28,4 +43,9 @@ const Form = styled.form`
     flex-direction:column;
     align-items:flex-end;
 `
-export default ShoppingList
+const mapStateToProps = (state, ownProps) => ({
+    test: state.test,
+    isUserLoggedIn:state.isUserLoggedIn
+  })
+  
+  export default connect(mapStateToProps)(ShoppingList)
