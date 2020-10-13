@@ -41,22 +41,10 @@ const addNewProductToDbHandler =(e)=>{
     {headers:getTokenFromLocalStorage(),
 }
 )
-  .then(res=>{
-    if(localStorage.getItem('access-token')){
-      axios.get('http://localhost:8000/user/me',{headers:getTokenFromLocalStorage()})
-      .then((res)=>{
-        
-       setShoppingCart(res.data.shoppingCart)
-        
+  .then(()=>{
+   setShoppingCart([])
       })
-      .catch((err)=>{
-        props.dispatch({type:"LOGOUT"})
-        console.log(err)
-      })
-    }else{
-      props.dispatch({type:"LOGOUT"})
-    }
-  })
+   
   .catch(err=>{
     console.log(`:(`)
   })
@@ -77,7 +65,7 @@ useEffect(() => {
   }else{
     props.dispatch({type:"LOGOUT"})
   }
-},[])
+},[shoppingCart])
 
   const listItems=shoppingCart.map((el,i)=>{
     return(
