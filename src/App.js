@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { GlobalStyles } from "./globalStyles";
 import User from "./components/user";
 import ShoppingList from "./components/shoppingList";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import Header from "./components/header";
 import Register from "./components/userComponents/Register";
 import Footer from "./components/footer";
@@ -16,19 +16,17 @@ function App(props) {
       <Header />
       <Main>
         <Switch>
-
           <Route exact path="/">
             {props.isUserLoggedIn ? <ShoppingList /> : <User />}
           </Route>
 
           <Route path="/login">
-            <Login />
+            {props.isUserLoggedIn ? <Redirect to="/" /> : <Login />}
           </Route>
-          
+
           <Route path="/register">
-            <Register />
+          {props.isUserLoggedIn ? <Redirect to="/" /> : <Register />}
           </Route>
-          
         </Switch>
       </Main>
       <Footer />

@@ -14,14 +14,16 @@ const Register = (props)=>{
             email: email,
             password:password
           })
-          .then(function (response) {
-            console.log(response);
+          .then((res)=> {
+              const token =res.data.token;
+              localStorage.setItem('access-token',token);
+              props.dispatch({type:'LOGIN'})
+            console.log(res);
           })
           .catch(function (error) {
-            console.log(error);
+            console.log({error:"wrong user name or password"});
           });
-           console.log('register user btn clicked')
-           console.log(`email:${email} password:{password}`)
+          
     }
     const  emailHandler = (e)=>{
        setEmail(e.target.value) 

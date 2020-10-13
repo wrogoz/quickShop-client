@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import axios from 'axios'
+import {saveTokenToLocalStorage} from '../../assets/token';
 const Login = (props)=>{
 
     const [email, setEmail] = useState('')
@@ -16,7 +17,7 @@ const Login = (props)=>{
           })
           .then(function (response) {
             console.log(response.data.token);
-            localStorage.setItem('access-token',response.data.token)
+            saveTokenToLocalStorage(response.data.token)
             props.dispatch({type:"LOGIN"});
           })
           .catch(function (error) {
