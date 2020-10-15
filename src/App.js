@@ -41,7 +41,7 @@ const Container = styled.div`
   font-family: 'Lato', sans-serif;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 60px 1fr 60px;
+  grid-template-rows: 80px 1fr 40px;
   grid-template-areas:
     "header"
     "main"
