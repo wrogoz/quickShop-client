@@ -52,7 +52,7 @@ const RegisterContainer = styled.section`
     flex-direction:column;
     justify-content:flex-end;
     align-items:center;
-    border:1px solid #35d388;
+    background:#fff;
     border-radius: 10px;
     padding:20px;
     
@@ -68,15 +68,15 @@ const Form = styled.form`
     input{
         margin:10px;
         text-align:center;
-        border:1px solid #35d388;
-        border-radius: 5%;
+        border:1px solid #534292;
+        border-radius: 10px;
        padding:10px;
        color:#35d388;
        outline:none;
     }
     button{
         min-width:150px;
-        background:#35d388;
+        background:#534292;
         border:none;
         padding:10px;
         margin-top:10px;
@@ -87,7 +87,7 @@ const Form = styled.form`
 `
 const BackButton = styled.button`
         min-width:150px;
-        background:#35d388;
+        background:#534292;
         border:none;
         padding:10px;
         color:#fff;

@@ -118,33 +118,33 @@ const ShoppingList = (props) => {
         <Ul>{listItems}</Ul>
       </ShoppingCartContainer>
       <Form>
-        <label>
-          Dodaj produkt:
+        
           <input
             type="text"
-            name="produkt"
+            name="product"
             onChange={setNewProductNameHandler}
             value={newProduct}
+            placeholder="dodaj produkt"
           />
-        </label>
-        <label>
-          waga:{" "}
+       
+      
           <input
             type="number"
-            name="produkt"
+            name="weight"
             onChange={setNewProductWeightHandler}
             value={NewProductWeight}
+            placeholder="waga produktu"
           />
-        </label>
-        <label>
-          ilość:{" "}
+        
+        
           <input
             type="number"
-            name="produkt"
+            name="amount"
             onChange={setNewProductAmountHandler}
             value={NewProductAmount}
+            placeholder="ilość"
           />
-        </label>
+        
         <button type="submit" onClick={addNewProductToDbHandler}>
           dodaj
         </button>
@@ -160,9 +160,10 @@ const ShoppingCartContainer = styled.section`
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
-  border: 1px solid #35d388;
+  
   border-radius: 10px;
   padding: 20px;
+  background-color:#fff;
 `;
 const Ul = styled.ul`
   display: flex;
@@ -175,12 +176,17 @@ const Ul = styled.ul`
   padding: 0;
   text-align: center;
   min-width: 290px;
+  color:#534292;
   li {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(3, 1fr) 20px;
+    grid-template-columns: 135px repeat(2,1fr) 20px;
     grid-template-rows: 50px;
     grid-template-areas: "name amount weight delete";
+    text-align:center;
+    &:nth-of-type(2n){
+      background-color:#eee;
+    }
 
     margin: 3px 0;
     span {
@@ -197,7 +203,8 @@ const Ul = styled.ul`
       grid-area: weight;
     }
     span.deleteBtn {
-      background-color: red;
+      background-color: #534292;
+      color:#fff;
       grid-area: delete;
       padding: 2px;
     }
@@ -206,7 +213,31 @@ const Ul = styled.ul`
 const Form = styled.form`
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: center;
+  margin:20px 0;
+  padding: 20px;
+  background-color:#fff;
+    border-radius: 10px;
+    width: 70%;
+    max-width: 400px;
+  input{
+        margin:5px;
+        text-align:center;
+        border:1px solid #534292;
+        border-radius: 10px;
+       padding:10px;
+       color:#534292;
+       outline:none;
+  }
+  button{
+        min-width:150px;
+        background:#534292;
+        border:none;
+        padding:10px;
+        margin-top:10px;
+        color:#fff;
+        border-radius:10px;
+    }
 `;
 const mapStateToProps = (state, ownProps) => ({
   test: state.test,

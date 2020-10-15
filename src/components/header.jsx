@@ -13,13 +13,13 @@ const Header = ()=>{
 }
 
 const HeaderContainer = styled.header`
-  border-bottom: 1px solid #35d388;
+
   grid-area: "header";
   display:flex;
   align-items:center;
   justify-content:center;
-  background:#35d388;
   color:#fff;
+  
 `;
 
 

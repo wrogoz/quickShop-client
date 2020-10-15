@@ -38,6 +38,7 @@ const Container = styled.div`
   width: 100%;
   min-width: 200px;
   min-height: 100vh;
+  font-family: 'Lato', sans-serif;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 60px 1fr 60px;
@@ -45,6 +46,8 @@ const Container = styled.div`
     "header"
     "main"
     "footer";
+    background-image: linear-gradient(to bottom,#654a86,#534292);
+    background-color: #534292;
 `;
 
 const Main = styled.main`

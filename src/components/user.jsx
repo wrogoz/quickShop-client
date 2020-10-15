@@ -19,15 +19,17 @@ const UserContainer = styled.section`
     flex-direction:column;
     justify-content:center;
     align-items:center;
-    border:1px solid #35d388;
+   
     border-radius: 10px;
     padding:20px;
     max-width:400px;
+    background-color: #fff;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.05);
     
 `
 const Button = styled.button`
 
-        background:#35d388;
+        background:#534292;
         border:none;
         padding:10px;
         color:#fff;
@@ -39,7 +41,7 @@ const Button = styled.button`
             text-decoration:none;
             color:#fff;
            
-            background-color:#35d388;
+            
             
         }
         

@@ -53,12 +53,15 @@ const LoginContainer = styled.section`
     flex-direction:column;
     justify-content:center;
     align-items:center;
-    border:1px solid #35d388;
+    background:#fff;
     border-radius: 10px;
     padding:20px;
     
-`
+`;
 const Form = styled.form`
+
+    font-family: 'Lato', sans-serif;
+  
     display:flex;
     height:100%;
     flex-direction:column;
@@ -66,17 +69,18 @@ const Form = styled.form`
     align-items:center;
     padding:10px 0;
     input{
+        
         margin:10px;
         text-align:center;
-        border:1px solid #35d388;
-        border-radius: 5%;
+        border:1px solid #534292;
+        border-radius: 10px;
        padding:10px;
-       color:#35d388;
+       color:#534292;
        outline:none;
     }
     button{
         min-width:150px;
-        background:#35d388;
+        background:#534292;
         border:none;
         padding:10px;
         margin-top:10px;
@@ -87,7 +91,7 @@ const Form = styled.form`
 `
 const BackButton = styled.button`
         min-width:150px;
-        background:#35d388;
+        background:#534292;
         border:none;
         padding:10px;
         color:#fff;
