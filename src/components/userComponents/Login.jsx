@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom'
 import axios from 'axios'
 import {saveTokenToLocalStorage} from '../../assets/token';
 const Login = (props)=>{
-
+    const [loginError,setLoginError] = useState(false)
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const LoginUserHandler=(e)=>{
@@ -16,12 +16,24 @@ const Login = (props)=>{
             password:password
           })
           .then(function (response) {
-            console.log(response.data.token);
-            saveTokenToLocalStorage(response.data.token)
-            props.dispatch({type:"LOGIN"});
+            
+            
+            if(loginError){
+                setLoginError(false)
+            }
+            if(response.data.token){
+                saveTokenToLocalStorage(response.data.token)
+                props.dispatch({type:"LOGIN"});
+            }else{
+                if(!loginError){
+                    setLoginError(true)
+                }
+            }
+           
           })
           .catch(function (error) {
             console.log(error);
+            setLoginError(true)
           });
            console.log('Login user btn clicked')
            console.log(`email:${email} password:${password}`)
@@ -39,6 +51,7 @@ const Login = (props)=>{
             <Form>
                 <input type="email" name="email" id="email" placeholder='email' onChange={emailHandler} value={email}/>
                 <input type="password" name="" id="password" placeholder='password' onChange={passwordHandler} value={password}/>
+                {loginError?<p>wrong email or password</p>:null}
                 <button type='submit' onClick={LoginUserHandler}>Login</button>
             </Form>
             <BackButton><Link to='/'>Back </Link></BackButton>
