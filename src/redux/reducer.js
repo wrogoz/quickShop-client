@@ -1,7 +1,8 @@
 
 const initialState = {
     test:'reducer test',
-    isUserLoggedIn:true
+    isUserLoggedIn:true,
+    shoppingCart:[]
    }
   
   const reducer = (state = initialState, action)=> {
@@ -18,9 +19,19 @@ const initialState = {
             isUserLoggedIn:false
           }
       
-        default:
-          return state
-      }
-    }
-  
+    
+    case 'EDITSHOPPINGCART':
+          return{
+            ...state,
+            shoppingCart:action.shoppingCart
+          }
+          case 'RESETSHOPPINGCART':
+            return{
+              ...state,
+              shoppingCart:[]
+            }
+          
+          default:
+            return state
+        }}
     export default reducer;

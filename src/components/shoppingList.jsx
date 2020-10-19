@@ -1,26 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect} from "react";
 import styled from "styled-components";
 import axios from "axios";
 import { connect } from "react-redux";
 import { getTokenFromLocalStorage } from "../assets/token";
-
+import ShoppingForm from './shoppingListComponents/form'
+import { editShoppingCart, resetShoppingCart } from "../redux/actions";
+import List from './shoppingListComponents/list'
 const ShoppingList = (props) => {
-  const [shoppingCart, setShoppingCart] = useState([]);
-  const [newProduct, setNewProduct] = useState("");
-  const [NewProductWeight, setNewProductWeight] = useState("");
-  const [NewProductAmount, setNewProductAmount] = useState("");
+ 
 
-  // ADDING PRODUCTS
+ 
 
-  const setNewProductNameHandler = (e) => {
-    setNewProduct(e.target.value);
-  };
-  const setNewProductWeightHandler = (e) => {
-    setNewProductWeight(e.target.value);
-  };
-  const setNewProductAmountHandler = (e) => {
-    setNewProductAmount(e.target.value);
-  };
+
   const getProductListFromDB = () => {
     if (localStorage.getItem("access-token")) {
       axios
@@ -28,7 +19,8 @@ const ShoppingList = (props) => {
           headers: getTokenFromLocalStorage(),
         })
         .then((res) => {
-          setShoppingCart(res.data.shoppingCart);
+          props.dispatch(editShoppingCart(res.data.shoppingCart))
+        
         })
         .catch((err) => {
           props.dispatch({ type: "LOGOUT" });
@@ -38,34 +30,7 @@ const ShoppingList = (props) => {
       props.dispatch({ type: "LOGOUT" });
     }
   };
-  const addNewProductToDbHandler = (e) => {
-    e.preventDefault();
-    if (newProduct.length > 0) {
-      axios
-        .patch(
-          "http://localhost:8000/user/addProduct",
-          {
-            name: newProduct,
-            weight: NewProductWeight,
-            amount: NewProductAmount,
-          },
-          { headers: getTokenFromLocalStorage() }
-        )
-        .then(() => {
-          setShoppingCart([]);
-          setNewProduct("");
-          setNewProductWeight("");
-          setNewProductAmount("");
-          getProductListFromDB();
-        })
-
-        .catch((err) => {
-          console.log({ error: err });
-        });
-    } else {
-      console.log("u must provide product name");
-    }
-  };
+  
   //        DELETING PRODUCTS
 
   const deleteProductHandler = (e) => {
@@ -79,7 +44,7 @@ const ShoppingList = (props) => {
           { headers: getTokenFromLocalStorage() }
         )
         .then(() => {
-          setShoppingCart([]);
+          props.dispatch(resetShoppingCart());
           getProductListFromDB();
         })
 
@@ -94,7 +59,7 @@ const ShoppingList = (props) => {
     getProductListFromDB();
   }, []);
 
-  const listItems = shoppingCart.map((el, i) => {
+  const listItems = props.shoppingCart.map((el, i) => {
     return (
       <li key={i}>
         <span>{el.name}</span>
@@ -115,40 +80,12 @@ const ShoppingList = (props) => {
   return (
     <>
       <ShoppingCartContainer>
-        <Ul>{listItems}</Ul>
+        <List
+          listItems={listItems}
+        />
+        
       </ShoppingCartContainer>
-      <Form>
-        
-          <input
-            type="text"
-            name="product"
-            onChange={setNewProductNameHandler}
-            value={newProduct}
-            placeholder="dodaj produkt"
-          />
-       
-      
-          <input
-            type="number"
-            name="weight"
-            onChange={setNewProductWeightHandler}
-            value={NewProductWeight}
-            placeholder="waga produktu"
-          />
-        
-        
-          <input
-            type="number"
-            name="amount"
-            onChange={setNewProductAmountHandler}
-            value={NewProductAmount}
-            placeholder="ilość"
-          />
-        
-        <button type="submit" onClick={addNewProductToDbHandler}>
-          dodaj
-        </button>
-      </Form>
+      <ShoppingForm/>
     </>
   );
 };
@@ -165,83 +102,11 @@ const ShoppingCartContainer = styled.section`
   padding: 20px;
   background-color:#fff;
 `;
-const Ul = styled.ul`
-  display: flex;
-  flex-direction: column;
-  align-items: space-evenly;
-  height: 100%;
-  width: 100%;
-  list-style: none;
-  text-transform: uppercase;
-  padding: 0;
-  text-align: center;
-  min-width: 290px;
-  color:#534292;
-  li {
-    width: 100%;
-    display: grid;
-    grid-template-columns: 135px repeat(2,1fr) 20px;
-    grid-template-rows: 50px;
-    grid-template-areas: "name amount weight delete";
-    text-align:center;
-    &:nth-of-type(2n){
-      background-color:#eee;
-    }
 
-    margin: 3px 0;
-    span {
-      justify-self: center;
-      align-self: center;
-    }
-    span:nth-of-type(1) {
-      grid-area: name;
-    }
-    span:nth-of-type(2) {
-      grid-area: amount;
-    }
-    span:nth-of-type(3) {
-      grid-area: weight;
-    }
-    span.deleteBtn {
-      background-color: #534292;
-      color:#fff;
-      grid-area: delete;
-      padding: 2px;
-    }
-  }
-`;
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin:20px 0;
-  padding: 20px;
-  background-color:#fff;
-    border-radius: 10px;
-    width: 70%;
-    max-width: 400px;
-  input{
-        margin:5px;
-        text-align:center;
-        border:1px solid #534292;
-        border-radius: 10px;
-       padding:10px;
-       color:#534292;
-       outline:none;
-  }
-  button{
-        min-width:150px;
-        background:#534292;
-        border:none;
-        padding:10px;
-        margin-top:10px;
-        color:#fff;
-        border-radius:10px;
-    }
-`;
 const mapStateToProps = (state, ownProps) => ({
   test: state.test,
   isUserLoggedIn: state.isUserLoggedIn,
+  shoppingCart:state.shoppingCart
 });
 
 export default connect(mapStateToProps)(ShoppingList);
