@@ -36,6 +36,8 @@ const Button = styled.button`
         border-radius:10px;
         margin:10px;
         min-width:150px;
+        font-family:'lato';
+        font-size:15px;
        
         a{
             text-decoration:none;

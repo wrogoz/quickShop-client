@@ -1,107 +1,48 @@
-import React,{useState} from 'react';
-import styled from 'styled-components'
-import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
-import axios from 'axios'
-const Register = (props)=>{
+import React from "react";
+import styled from "styled-components";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const registerUserHandler=(e)=>{
-           e.preventDefault()     
-           axios.post('http://localhost:8000/user/register', {
-            name: email,
-            email: email,
-            password:password
-          })
-          .then((res)=> {
-              const token =res.data.token;
-              localStorage.setItem('access-token',token);
-              props.dispatch({type:'LOGIN'})
-            console.log(res);
-          })
-          .catch(function (error) {
-            console.log({error:"wrong user name or password"});
-          });
-          
-    }
-    const  emailHandler = (e)=>{
-       setEmail(e.target.value) 
-    }
-    const  passwordHandler = (e)=>{
-        setPassword(e.target.value) 
-     }
-    return(
-        
-        <RegisterContainer>
-           
-            <Form>
-                <input type="email" name="email" id="email" placeholder='email' onChange={emailHandler} value={email}/>
-                <input type="password" name="" id="password" placeholder='password' onChange={passwordHandler} value={password}/>
-                <button type='submit' onClick={registerUserHandler}>Register</button>
-            </Form>
-            <Link to='/'> <BackButton>Back button</BackButton></Link>
-        </RegisterContainer>
-    )
-}
+import RegisterForm from "../registerComponents/registerForm";
+const Register = () => {
+  return (
+    <RegisterContainer>
+      <RegisterForm />
+      <Link to="/">
+        {" "}
+        <BackButton>Back </BackButton>
+      </Link>
+    </RegisterContainer>
+  );
+};
 const RegisterContainer = styled.section`
-    width: 70%;
-    max-width:400px;
-    height: 60%;
-    display:flex;
-    flex-direction:column;
-    justify-content:flex-end;
-    align-items:center;
-    background:#fff;
-    border-radius: 10px;
-    padding:20px;
-    
-    
-`
-const Form = styled.form`
-    display:flex;
-    height:100%;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    padding:10px 0;
-    input{
-        margin:10px;
-        text-align:center;
-        border:1px solid #534292;
-        border-radius: 10px;
-       padding:10px;
-       color:#35d388;
-       outline:none;
-    }
-    button{
-        min-width:150px;
-        background:#534292;
-        border:none;
-        padding:10px;
-        margin-top:10px;
-        color:#fff;
-        border-radius:10px;
-    }
-  
-`
-const BackButton = styled.button`
-        min-width:150px;
-        background:#534292;
-        border:none;
-        padding:10px;
-        color:#fff;
-        border-radius:10px;
-    a{
-        text-decoration:none;
-        color:#fff;
+  width: 70%;
+  max-width: 400px;
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+`;
 
-    }
-    
-`
+const BackButton = styled.button`
+  min-width: 150px;
+  background: #534292;
+  border: none;
+  padding: 10px;
+  color: #fff;
+  border-radius: 10px;
+  a {
+    text-decoration: none;
+    color: #fff;
+  }
+`;
 const mapStateToProps = (state, ownProps) => ({
-    test: state.test,
-    isUserLoggedIn:state.isUserLoggedIn
-  })
-  
-  export default connect(mapStateToProps)(Register)
+  test: state.test,
+  isUserLoggedIn: state.isUserLoggedIn,
+});
+
+export default connect(mapStateToProps)(Register);
