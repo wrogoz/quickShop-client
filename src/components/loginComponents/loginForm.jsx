@@ -1,8 +1,9 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import axios from "axios";
-import isEmail from "validator/lib/isEmail";
-import { saveTokenToLocalStorage } from "../../assets/token";
+import React, { useState } from "react"
+import styled from "styled-components"
+import axios from "axios"
+import isEmail from "validator/lib/isEmail"
+import {connect} from 'react-redux'
+import { saveTokenToLocalStorage } from "../../assets/token"
 const LoginForm = (props) => {
   const [loginError, setLoginError] = useState(false);
   const [email, setEmail] = useState("");
@@ -98,4 +99,7 @@ const Form = styled.form`
   }
 `;
 
-export default LoginForm;
+const mapStateToProps =(state)=>({
+    isUserLoggedIn: state.isUserLoggedIn
+})
+export default connect(mapStateToProps)(LoginForm)

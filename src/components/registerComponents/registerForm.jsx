@@ -2,6 +2,7 @@ import React,{useState} from 'react';
 import styled from 'styled-components'
 import axios from 'axios'
 import isEmail from 'validator/lib/isEmail';
+import {connect } from 'react-redux'
 const RegisterForm = (props)=>{
     const [registerError,setRegisterError] = useState(false)
     const [email, setEmail] = useState('')
@@ -96,4 +97,7 @@ const Form = styled.form`
   
 `
 
-export default RegisterForm
+const mapStateToProps =(state)=>({
+    isUserLoggedIn: state.isUserLoggedIn
+})
+export default connect(mapStateToProps)(RegisterForm)

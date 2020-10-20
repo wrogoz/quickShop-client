@@ -35,12 +35,14 @@ const BackButton = styled.button`
   padding: 10px;
   color: #fff;
   border-radius: 10px;
+  font-family:'lato';
+
   a {
     text-decoration: none;
     color: #fff;
   }
 `;
-const mapStateToProps = (state, ownProps) => ({
+const mapStateToProps = (state) => ({
   test: state.test,
   isUserLoggedIn: state.isUserLoggedIn,
 });
