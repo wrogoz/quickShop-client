@@ -12,7 +12,7 @@ const LoginForm = (props) => {
     e.preventDefault();
     if (isEmail(email)) {
       axios
-        .post("http://wr-quickshop.herokuapp.com/user/login", {
+        .post("https://wr-quickshop.herokuapp.com/user/login", {
           email: email,
           password: password,
         })
