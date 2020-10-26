@@ -15,7 +15,7 @@ const ShoppingList = (props) => {
   const getProductListFromDB = () => {
     if (localStorage.getItem("access-token")) {
       axios
-        .get("http://localhost:8000/user/me", {
+        .get("http://wr-quickshop.herokuapp.com/user/me", {
           headers: getTokenFromLocalStorage(),
         })
         .then((res) => {
@@ -36,7 +36,7 @@ const ShoppingList = (props) => {
   const deleteProductHandler = (e) => {
     axios
         .patch(
-          "http://localhost:8000/user/removeProduct",
+          "http://wr-quickshop.herokuapp.com/user/removeProduct",
           {
             name: e,
            
@@ -55,7 +55,7 @@ const ShoppingList = (props) => {
 
   // SIDE EFFECTS
   useEffect(() => {
-    console.log("use effect fired");
+    
     getProductListFromDB();
   }, []);
 

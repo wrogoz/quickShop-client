@@ -22,7 +22,7 @@ const ShoppingForm = (props)=>{
   const getProductListFromDB = () => {
     if (localStorage.getItem("access-token")) {
       axios
-        .get("http://localhost:8000/user/me", {
+        .get("http://wr-quickshop.herokuapp.com/user/me", {
           headers: getTokenFromLocalStorage(),
         })
         .then((res) => {
@@ -43,7 +43,7 @@ const ShoppingForm = (props)=>{
     if (newProduct.length > 0) {
       axios
         .patch(
-          "http://localhost:8000/user/addProduct",
+          "http://wr-quickshop.herokuapp.com/user/addProduct",
           {
             name: newProduct,
             weight: NewProductWeight,

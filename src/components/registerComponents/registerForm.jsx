@@ -12,7 +12,7 @@ const RegisterForm = (props)=>{
     const registerUserHandler=(e)=>{
            e.preventDefault()     
            if(isEmail(email) && password===repeatedPassword){
-            axios.post('http://localhost:8000/user/register', {
+            axios.post('http://wr-quickshop.herokuapp.com/user/register', {
                 name: email,
                 email: email,
                 password:password
