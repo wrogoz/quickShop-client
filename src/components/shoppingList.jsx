@@ -57,6 +57,7 @@ const ShoppingList = (props) => {
   useEffect(() => {
     
     getProductListFromDB();
+    // eslint-disable-next-line react-hooks/exhaustive-deps 
   }, []);
 
   const listItems = props.shoppingCart.map((el, i) => {
