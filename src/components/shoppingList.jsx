@@ -14,17 +14,21 @@ const ShoppingList = (props) => {
 
   const getProductListFromDB = () => {
     if (localStorage.getItem("access-token")) {
-      axios
+      
+     axios
         .get("https://wr-quickshop.herokuapp.com/user/me", {
           headers: getTokenFromLocalStorage(),
+        
         })
         .then((res) => {
+          
           props.dispatch(editShoppingCart(res.data.shoppingCart))
         
         })
         .catch((err) => {
           props.dispatch({ type: "LOGOUT" });
           console.log(err);
+          console.log('client err')
         });
     } else {
       props.dispatch({ type: "LOGOUT" });
