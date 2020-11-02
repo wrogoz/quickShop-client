@@ -4,7 +4,7 @@ import axios from "axios";
 import { connect } from "react-redux";
 import { getTokenFromLocalStorage } from "../assets/token";
 import ShoppingForm from './shoppingListComponents/form';
-import { editShoppingCart, resetShoppingCart } from "../redux/actions";
+import { editShoppingCart} from "../redux/actions";
 import List from './shoppingListComponents/list';
 import dumpster from '../assets/images/dumpster.svg';
 const ShoppingList = (props) => {
@@ -49,13 +49,14 @@ const ShoppingList = (props) => {
           { headers: getTokenFromLocalStorage() }
         )
         .then(() => {
-          props.dispatch(resetShoppingCart());
+         
           getProductListFromDB();
         })
 
         .catch((err) => {
           console.log({ error: err });
         });
+        
   };
 
   // SIDE EFFECTS

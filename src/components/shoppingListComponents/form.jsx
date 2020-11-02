@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { connect } from "react-redux";
 import axios from 'axios'
 import { getTokenFromLocalStorage } from "../../assets/token"
-import {editShoppingCart,resetShoppingCart} from '../../redux/actions'
+import {editShoppingCart} from '../../redux/actions'
 const ShoppingForm = (props)=>{
   
     const [newProduct, setNewProduct] = useState("");
@@ -52,7 +52,7 @@ const ShoppingForm = (props)=>{
           { headers: getTokenFromLocalStorage() }
         )
         .then(() => {
-          props.dispatch(resetShoppingCart());
+        
           setNewProduct("");
           setNewProductWeight("");
           setNewProductAmount("");
