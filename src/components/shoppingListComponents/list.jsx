@@ -23,7 +23,7 @@ const Ul = styled.ul`
   li {
     width: 100%;
     display: grid;
-    grid-template-columns: 135px repeat(2,1fr) 20px;
+    grid-template-columns: 120px repeat(2,1fr) 50px;
     grid-template-rows: 50px;
     grid-template-areas: "name amount weight delete";
     text-align:center;
@@ -35,6 +35,12 @@ const Ul = styled.ul`
     span {
       justify-self: center;
       align-self: center;
+      p{
+        padding: 0;
+        margin: 0;
+        font-size: 14px;
+      }
+   
     }
     span:nth-of-type(1) {
       grid-area: name;
@@ -45,11 +51,13 @@ const Ul = styled.ul`
     span:nth-of-type(3) {
       grid-area: weight;
     }
-    span.deleteBtn {
-      background-color: #534292;
+    img {
+     
       color:#fff;
       grid-area: delete;
-      padding: 2px;
+      padding-top: 2px;
+      width:20px;
+      
     }
   }
 `;

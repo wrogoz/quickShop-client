@@ -3,9 +3,10 @@ import styled from "styled-components";
 import axios from "axios";
 import { connect } from "react-redux";
 import { getTokenFromLocalStorage } from "../assets/token";
-import ShoppingForm from './shoppingListComponents/form'
+import ShoppingForm from './shoppingListComponents/form';
 import { editShoppingCart, resetShoppingCart } from "../redux/actions";
-import List from './shoppingListComponents/list'
+import List from './shoppingListComponents/list';
+import dumpster from '../assets/images/dumpster.svg';
 const ShoppingList = (props) => {
  
 
@@ -67,16 +68,16 @@ const ShoppingList = (props) => {
   const listItems = props.shoppingCart.map((el, i) => {
     return (
       <li key={i}>
-        <span>{el.name}</span>
-        <span>{el.amount ? el.amount : "-"}</span>
-        <span>{el.weight ? `${el.weight} kg` : "- "}</span>
+        <span><p>{el.name}</p></span>
+        <span><p>{el.amount ? el.amount : "-"}</p></span>
+        <span><p>{el.weight ? `${el.weight} kg` : "- "}</p></span>
         <span
           className="deleteBtn"
           onClick={() => {
             deleteProductHandler(el.name);
           }}
         >
-          X
+          <img src={dumpster} alt="delete item "/>
         </span>
       </li>
     );
@@ -96,6 +97,7 @@ const ShoppingList = (props) => {
 };
 const ShoppingCartContainer = styled.section`
   width: 70%;
+  min-width: 260px;
   max-width: 400px;
   height: 60%;
   display: flex;

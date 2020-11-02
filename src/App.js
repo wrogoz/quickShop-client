@@ -36,7 +36,7 @@ function App(props) {
 
 const Container = styled.div`
   width: 100%;
-  min-width: 200px;
+  min-width: 340px;
   min-height: 100vh;
   font-family: 'Lato', sans-serif;
   display: grid;
