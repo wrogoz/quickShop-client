@@ -1,7 +1,7 @@
 # QUICKSHOP MERN app.
  
 # Page:
-    www.quickshop.netlify.app
+     https://quickshop.netlify.app
 # FrontEnd Technologies:
 - ES6
 - React
