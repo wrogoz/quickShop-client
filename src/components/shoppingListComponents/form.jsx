@@ -61,7 +61,7 @@ const ShoppingForm = (props) => {
         name="product"
         onChange={setNewProductNameHandler}
         value={newProduct}
-        placeholder="dodaj produkt"
+        placeholder="product name"
       />
 
       <input
@@ -69,7 +69,7 @@ const ShoppingForm = (props) => {
         name="weight"
         onChange={setNewProductWeightHandler}
         value={NewProductWeight}
-        placeholder="waga produktu"
+        placeholder="weight"
       />
 
       <input
@@ -77,11 +77,11 @@ const ShoppingForm = (props) => {
         name="amount"
         onChange={setNewProductAmountHandler}
         value={NewProductAmount}
-        placeholder="ilość"
+        placeholder="quantity"
       />
 
       <button type="submit" onClick={addNewProductToDbCart}>
-        Dodaj
+        Add product
       </button>
     </Form>
   );
@@ -98,13 +98,25 @@ const Form = styled.form`
   max-width: 400px;
   input {
     margin: 5px;
-    text-align: center;
     border: 1px solid #534292;
     border-radius: 10px;
     padding: 10px;
     color: #534292;
     outline: none;
+    text-align:center;
+    
+    &::placeholder{
+      text-align:center;
+    }
+   
   }
+  input[type='number']::-webkit-inner-spin-button, 
+    input[type='number']::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    margin: 0;
+}
+ 
+  
   button {
     min-width: 150px;
     background: #534292;
