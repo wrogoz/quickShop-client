@@ -17,14 +17,19 @@ const reducer = (state = initialState, action) => {
         isUserLoggedIn: false,
       };
 
-    case "EDITSHOPPINGCART":
+    case "SAVESHOPPINGCARTFROMDB":
+      return {
+        ...state,
+        shoppingCart: action.shoppingCart,
+      };
+    case "ADDPRODUCT":
       return {
         ...state,
         shoppingCart: action.shoppingCart,
       };
     case "DELETEPRODUCT":
       return {
-        state,
+        ...state,
         shoppingCart: action.shoppingCart,
       };
     case "RESETSHOPPINGCART":

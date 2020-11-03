@@ -25,7 +25,7 @@ function App(props) {
           </Route>
 
           <Route path="/register">
-          {props.isUserLoggedIn ? <Redirect to="/" /> : <Register />}
+            {props.isUserLoggedIn ? <Redirect to="/" /> : <Register />}
           </Route>
         </Switch>
       </Main>
@@ -38,7 +38,7 @@ const Container = styled.div`
   width: 100%;
   min-width: 340px;
   min-height: 100vh;
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 80px 1fr 40px;
@@ -46,8 +46,8 @@ const Container = styled.div`
     "header"
     "main"
     "footer";
-    background-image: linear-gradient(to bottom,#654a86,#534292);
-    background-color: #534292;
+  background-image: linear-gradient(to bottom, #654a86, #534292);
+  background-color: #534292;
 `;
 
 const Main = styled.main`
