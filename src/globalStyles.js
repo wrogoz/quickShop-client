@@ -8,6 +8,7 @@ export const GlobalStyles= createGlobalStyle`
        font-family: 'Lato', sans-serif;
        height:100%;
        width:100%;
+       overscroll-behavior: none;
    }
    
 `
